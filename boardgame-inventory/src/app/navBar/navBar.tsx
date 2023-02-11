@@ -1,50 +1,83 @@
+"use client"; // this is a client component
+
 import Image from "next/image"
+import Link from "next/link";
 import { useState } from "react"
 
 export const NavBar = () => {
     const [openNavBar, setOpenNavBar] = useState<boolean>(true)
+    const [openFilter, setOpenFilter] = useState<boolean>(false)
+
+    const HandleOpenCloseNavbar = () => {
+        setOpenNavBar((prevState) => !prevState)
+    }
+
+    const handleFilterOpen = () => {
+        setOpenFilter((prevState) => !prevState)
+        }
 
     return (
         <>
             <div className='navbar-play-contain'>
-                <div className={`w-64 duration-500 h-screen p-5 pt-8 bg-slate-900 relative md:w-30`}>
-                    <Image className="absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500" src="/image/img.png" width={25} height={25} alt="" />
-                    {/* <img src={Collasp}  //using imported image
-                        alt='collasp'
-                        className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500`}
-                    /> */}
-                    <div className='flex gap-x-4 items-center'>
-                        <Image src="/image/logo.png" width={25} height={25} alt=""/>
-                        {/* <img src={LogoImage}  //using imported image
-                            alt='play-logo'
-                            className={`cursor-pointer duration-500`}
-                        /> */}
-                        <h1 className={`text-white origin-left font-medium text-xl duration-300`}>Develop</h1>
+                <div className={`${openNavBar ? "w-64" : "w-20"} duration-500 h-screen p-5 pt-8 bg-slate-900 relative md:w-30`}>
+                    <Image onClick={HandleOpenCloseNavbar} className={`${!openNavBar && "rotate-180"} absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500`} src="/image/img.png" width={30} height={30} alt="" />
+                    <Link href={"/"} className='flex gap-x-4 items-center p-2'>
+                        <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/>
+                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Boad Game</h1>
+                    </Link>
+                    <div className='pt-6 flex gap-x-4 items-center p-2'>
+                        {/* <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/> */}
+                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Filtre</h1>
                     </div>
-                    <ul className="pt-6 menu">
+                    <ul className="menu">
+                        <li>
+                            <button onClick={handleFilterOpen} id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Dropdown <svg className="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+                                {/* <!-- Dropdown menu --> */}
+                            <div id="dropdownNavbar" className={`${!openFilter && "hidden"} z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
+                                <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                    </li>
+                                </ul>
+                                <div className="py-1">
+                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Sign out</a>
+                                </div>
+                            </div>
+                        </li>
+
                         <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
                             <Image src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                            <span className="origin-left duration-200">Dashbord</span>
+                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Dashbord</span>
                         
                         </li>
+
                         <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
                             <Image src="/image/Chat.png" width={25} height={25} alt="chart" /> 
-                            <span className="origin-left duration-200">Ideas</span>
+                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Ideas</span>
                         
                         </li>
+
                         <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
                             <Image src="/image/User.png" width={25} height={25} alt="chart" /> 
-                            <span className="origin-left duration-200">Join</span>
+                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Join</span>
                         
                         </li>
+
                         <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-9 menu-items">
                             <Image src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                            <span className="origin-left duration-200">Build</span>
+                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Build</span>
                         
                         </li>
+                        
                         <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
                             <Image src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                            <span className="origin-left duration-200">Search</span>
+                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Search</span>
                         
                         </li>
                     </ul>
