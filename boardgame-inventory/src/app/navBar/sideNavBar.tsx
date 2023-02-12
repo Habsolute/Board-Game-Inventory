@@ -48,13 +48,13 @@ export const SideNavBar = () => {
         <>
 
             <div className='navbar-play-contain'>
-                <div className={`${openNavBar ? "w-64" : "w-20"} duration-500 h-screen p-5 pt-8 bg-slate-900 relative md:w-30`}>
+                <div className={`${openNavBar ? "w-64" : "w-20"} duration-500 h-screen p-5 bg-slate-900 relative md:w-30`}>
                     {/* <Image onClick={HandleOpenCloseNavbar} className={`${!openNavBar && "rotate-180"} absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500`} src="/image/img.png" width={30} height={30} alt="" /> */}
-                    <Link href={"/"} className='flex gap-x-4 items-center p-2'>
+                    {/* <Link href={"/"} className='flex gap-x-4 items-center p-2'>
                         <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/>
-                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Jeux de Société Magalie</h1>
-                    </Link>
-                    <div className='pt-6 flex gap-x-4 items-center p-2'>
+                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Jeux de Société</h1>
+                    </Link> */}
+                    <div className='flex gap-x-4 items-center p-2'>
                         {/* <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/> */}
                         <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Filtre</h1>
                     </div>
