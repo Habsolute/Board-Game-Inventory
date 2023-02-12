@@ -1,13 +1,15 @@
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
+import { BoardGameCard } from './component/cards/boardGameCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ width: "100%" }} className=' bg-slate-200 p-10'>
       <h1>hello world</h1>
+      <BoardGameCard />
     </div>
     // <main className={styles.main}>
     //   <div className={styles.description}>
