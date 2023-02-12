@@ -1,9 +1,11 @@
-import { NavBar } from "../navBar/navBar"
+import { SideNavBar } from "../navBar/sideNavBar"
+import { TopNavBar } from "../navBar/topNavBar"
 
 export const Header = () => {
     return (
         <header>
-            <NavBar /> 
+            <TopNavBar />
+            <SideNavBar /> 
         </header>
     )
 }
