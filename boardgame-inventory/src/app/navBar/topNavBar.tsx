@@ -14,16 +14,16 @@ export const TopNavBar = () => {
             <div className="flex text-base">
                 <ul className="flex justify-end text-white font-bold mr-14 ">
                     <li className="flex items-center mr-7">
-                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Locations</a> 
+                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Onglet Future</a> 
                     </li>
                     <li className="flex items-center mr-7">
-                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Locations</a> 
+                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Onglet Future</a> 
                     </li>
                     <li className="flex items-center mr-7">
-                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Locations</a> 
+                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Onglet Future</a> 
                     </li>
                     <li className="flex items-center mr-7">
-                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Locations</a> 
+                        <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Onglet Future</a> 
                     </li>
                     <li className="flex items-center mr-7">
                         <a className='p-2 text-gray-300 items-center gap-x-4 menu-items border-b-2 border-transparent hover:border-b-2 hover:border-white' href="#">Locations</a> 
