@@ -11,10 +11,21 @@ export const SideNavBar = () => {
     const [openFilterTime, setOpenFiltertime] = useState<boolean>(false)
     const [openFilterPlayers, setOpenFilterPlayers] = useState<boolean>(false)
 
+    const [genre, setGenre] = useState<string>("")
+    const [age, setAge] = useState<string>("")
+    const [time, setTime] = useState<string>("")
+    const [joueurs, setjoueurs] = useState<string>("")
 
-    const HandleOpenCloseNavbar = () => {
-        setOpenNavBar((prevState) => !prevState)
-    }
+    /**
+     *  Pour les filtre, Rajouter le genre, age, temps et joueurs quand il est sélectionner dans la barre de naivation
+     * La personne va pourvoir désélectionner en pesant sur un x
+     * Si possible le metre dans la barre de navigation de hauche.  
+     * MAGALO
+     */
+
+    // const HandleOpenCloseNavbar = () => {
+    //     setOpenNavBar((prevState) => !prevState)
+    // }
 
     const handleFilterOpen = () => {
         setOpenFilterGenre((prevState) => !prevState)
@@ -38,10 +49,10 @@ export const SideNavBar = () => {
 
             <div className='navbar-play-contain'>
                 <div className={`${openNavBar ? "w-64" : "w-20"} duration-500 h-screen p-5 pt-8 bg-slate-900 relative md:w-30`}>
-                    <Image onClick={HandleOpenCloseNavbar} className={`${!openNavBar && "rotate-180"} absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500`} src="/image/img.png" width={30} height={30} alt="" />
+                    {/* <Image onClick={HandleOpenCloseNavbar} className={`${!openNavBar && "rotate-180"} absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500`} src="/image/img.png" width={30} height={30} alt="" /> */}
                     <Link href={"/"} className='flex gap-x-4 items-center p-2'>
                         <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/>
-                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Jeux de Société</h1>
+                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Jeux de Société Magalie</h1>
                     </Link>
                     <div className='pt-6 flex gap-x-4 items-center p-2'>
                         {/* <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/> */}
@@ -57,6 +68,7 @@ export const SideNavBar = () => {
                             <div className={`flex`}>
                                 <Image className={`mr-4`} src="/image/Chart.png" width={25} height={25} alt="chart" /> 
                                 <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Genre</span>
+                                <span>{genre}</span>
 
                             </div>
                             <div>
@@ -66,29 +78,29 @@ export const SideNavBar = () => {
                         </li>
                             <div id="dropdownNavbar" className={`${!openFilterGenre && "hidden"}  w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
                                 <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Plateau</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Plateau
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Carte</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Carte
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Coopération</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Coopération
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Adresse</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Adresse
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Connaissances</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Connaissances
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Mémoire</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Mémoire
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Stratégie</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Stratégie
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Dès</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Dès
                                     </li>
                                 </ul>
                             </div>
@@ -108,20 +120,23 @@ export const SideNavBar = () => {
                         </li>
                             <div id="dropdownNavbar" className={`${!openFilterAge && "hidden"} w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
                                 <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">7 ans et moins</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">8+</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">10+</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">12+</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">14+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        5 ans et moins
+                                    </li>                                    
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        7 ans et moins
+                                    </li>                                    
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        8+
+                                    </li>                                    
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        10+
+                                    </li>                                    
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        12+
+                                    </li>                                    
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        14+
                                     </li>
                                 </ul>
                             </div>
@@ -130,7 +145,7 @@ export const SideNavBar = () => {
                         <li onClick={handleFilterTimeOpen} className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700 ">
                             <div className="flex">
                                 <Image className={`mr-4`} src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Time</span>
+                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Temps</span>
 
                             </div>
                             <div>
@@ -140,20 +155,20 @@ export const SideNavBar = () => {
                         </li>
                             <div id="dropdownNavbar" className={`${!openFilterTime && "hidden"} w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
                                 <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins de 30 Minutes</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Moins de 30 Minutes
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins 40 Minutes</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Moins 40 Minutes
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins 60 Minutes</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Moins 60 Minutes
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins 90 Minutes</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Moins 90 Minutes
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Plus de 90 Minutes</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Plus de 90 Minutes
                                     </li>
                                 </ul>
                             </div>
@@ -164,7 +179,7 @@ export const SideNavBar = () => {
                         <li onClick={handleFilterPlayersOpen} className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700 ">
                             <div className="flex">
                                 <Image className={`mr-4`} src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Nombre de joueurs</span>
+                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Joueurs</span>
 
                             </div>
                             <div>
@@ -174,32 +189,32 @@ export const SideNavBar = () => {
                         </li>
                             <div id="dropdownNavbar" className={`${!openFilterPlayers && "hidden"} w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
                                 <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Solo</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        Solo
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">2+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                       2+
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">3+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        3+
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">4+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        4+
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">5+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        5+
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">6+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        6+
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">7+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        7+
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">8+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        8+
                                     </li>
-                                    <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">10+</a>
+                                    <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
+                                        10+
                                     </li>
                                 </ul>
                             </div>
