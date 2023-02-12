@@ -4,82 +4,205 @@ import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react"
 
-export const NavBar = () => {
+export const SideNavBar = () => {
     const [openNavBar, setOpenNavBar] = useState<boolean>(true)
-    const [openFilter, setOpenFilter] = useState<boolean>(false)
+    const [openFilterGenre, setOpenFilterGenre] = useState<boolean>(false)
+    const [openFilterAge, setOpenFilterAge] = useState<boolean>(false)
+    const [openFilterTime, setOpenFiltertime] = useState<boolean>(false)
+    const [openFilterPlayers, setOpenFilterPlayers] = useState<boolean>(false)
+
 
     const HandleOpenCloseNavbar = () => {
         setOpenNavBar((prevState) => !prevState)
     }
 
     const handleFilterOpen = () => {
-        setOpenFilter((prevState) => !prevState)
-        }
+        setOpenFilterGenre((prevState) => !prevState)
+    }
+
+    const handleFilterAgeOpen = () => {
+        setOpenFilterAge((prevState) => !prevState)
+    }
+    
+    const handleFilterTimeOpen = () => {
+        setOpenFiltertime((prevState) => !prevState)
+
+    }
+    const handleFilterPlayersOpen = () => {
+        setOpenFilterPlayers((prevState) => !prevState)
+
+    }
 
     return (
         <>
+
             <div className='navbar-play-contain'>
                 <div className={`${openNavBar ? "w-64" : "w-20"} duration-500 h-screen p-5 pt-8 bg-slate-900 relative md:w-30`}>
                     <Image onClick={HandleOpenCloseNavbar} className={`${!openNavBar && "rotate-180"} absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500`} src="/image/img.png" width={30} height={30} alt="" />
                     <Link href={"/"} className='flex gap-x-4 items-center p-2'>
                         <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/>
-                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Boad Game</h1>
+                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Jeux de Société</h1>
                     </Link>
                     <div className='pt-6 flex gap-x-4 items-center p-2'>
                         {/* <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/> */}
                         <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Filtre</h1>
                     </div>
+
+
+
                     <ul className="menu">
-                        <li>
-                            <button onClick={handleFilterOpen} id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Dropdown <svg className="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+
+                        {/* ---------------------------------Filtre pour Genre ----------------------------- */}
+                        <li onClick={handleFilterOpen} className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700">
+                            <div className={`flex`}>
+                                <Image className={`mr-4`} src="/image/Chart.png" width={25} height={25} alt="chart" /> 
+                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Genre</span>
+
+                            </div>
+                            <div>
+                                <Image className={`${openFilterGenre ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                            </div>
                                 {/* <!-- Dropdown menu --> */}
-                            <div id="dropdownNavbar" className={`${!openFilter && "hidden"} z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
-                                <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                        </li>
+                            <div id="dropdownNavbar" className={`${!openFilterGenre && "hidden"}  w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
+                                <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
                                     <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Plateau</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Carte</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Coopération</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Adresse</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Connaissances</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Mémoire</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Stratégie</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Dès</a>
                                     </li>
                                 </ul>
-                                <div className="py-1">
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Sign out</a>
-                                </div>
                             </div>
-                        </li>
 
-                        <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
-                            <Image src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Dashbord</span>
-                        
-                        </li>
+                        {/* ---------------------------------Filtre pour l'age ----------------------------- */}
 
-                        <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
-                            <Image src="/image/Chat.png" width={25} height={25} alt="chart" /> 
-                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Ideas</span>
-                        
-                        </li>
+                        <li onClick={handleFilterAgeOpen} className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700 ">
+                            <div className="flex">
+                                <Image className={`mr-4`} src="/image/Chart.png" width={25} height={25} alt="chart" /> 
+                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Age</span>
 
-                        <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
-                            <Image src="/image/User.png" width={25} height={25} alt="chart" /> 
-                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Join</span>
-                        
+                            </div>
+                            <div>
+                                <Image className={`${openFilterAge ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                            </div>
+                                {/* <!-- Dropdown menu --> */}
                         </li>
+                            <div id="dropdownNavbar" className={`${!openFilterAge && "hidden"} w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
+                                <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">7 ans et moins</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">8+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">10+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">12+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">14+</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                        <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-9 menu-items">
-                            <Image src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Build</span>
-                        
+                            {/* ---------------------------------Filtre pour temps ----------------------------- */}
+                        <li onClick={handleFilterTimeOpen} className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700 ">
+                            <div className="flex">
+                                <Image className={`mr-4`} src="/image/Chart.png" width={25} height={25} alt="chart" /> 
+                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Time</span>
+
+                            </div>
+                            <div>
+                                <Image className={`${openFilterTime ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                            </div>
+                                {/* <!-- Dropdown menu --> */}
                         </li>
-                        
-                        <li className="flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 hover:bg-gray-50 hover:text-slate-900 rounded-md mt-2 menu-items">
-                            <Image src="/image/Chart.png" width={25} height={25} alt="chart" /> 
-                            <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Search</span>
-                        
+                            <div id="dropdownNavbar" className={`${!openFilterTime && "hidden"} w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
+                                <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins de 30 Minutes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins 40 Minutes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins 60 Minutes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Moins 90 Minutes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Plus de 90 Minutes</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            {/* --------------------------Filtre pour Nombre de joueurs ----------------------------- */}
+
+                        <li onClick={handleFilterPlayersOpen} className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700 ">
+                            <div className="flex">
+                                <Image className={`mr-4`} src="/image/Chart.png" width={25} height={25} alt="chart" /> 
+                                <span className={`${!openNavBar && "hidden"} origin-left duration-200`}>Nombre de joueurs</span>
+
+                            </div>
+                            <div>
+                                <Image className={`${openFilterPlayers ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                            </div>
+                                {/* <!-- Dropdown menu --> */}
                         </li>
+                            <div id="dropdownNavbar" className={`${!openFilterPlayers && "hidden"} w10 mt-3 z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:divide-gray-600`}>
+                                <ul className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Solo</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">2+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">3+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">4+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">5+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">6+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">7+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">8+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">10+</a>
+                                    </li>
+                                </ul>
+                            </div>
                     </ul>
                 </div>
                 
