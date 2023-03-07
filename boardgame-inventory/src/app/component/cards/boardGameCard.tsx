@@ -33,8 +33,6 @@ export const BoardGameCard = () => {
                                 <Image className="mr-1" src="/image/Chart.png" alt="" width={20} height={20}/>
                                 90 à 120
                             </li>
-                            {/* <li>12+</li>
-                            <li>90 à 120</li> */}
                         </ul>
                     </div>
                 </div>
