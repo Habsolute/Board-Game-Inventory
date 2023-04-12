@@ -72,7 +72,7 @@ export const SideNavBar = () => {
 
                             </div>
                             <div>
-                                <Image className={`${openFilterGenre ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                                <Image className={`transition-all ${openFilterGenre ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
                             </div>
                                 {/* <!-- Dropdown menu --> */}
                         </li>
@@ -114,7 +114,7 @@ export const SideNavBar = () => {
 
                             </div>
                             <div>
-                                <Image className={`${openFilterAge ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                                <Image className={`transition-all ${openFilterAge ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
                             </div>
                                 {/* <!-- Dropdown menu --> */}
                         </li>
@@ -149,7 +149,7 @@ export const SideNavBar = () => {
 
                             </div>
                             <div>
-                                <Image className={`${openFilterTime ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                                <Image className={`transition-all ${openFilterTime ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
                             </div>
                                 {/* <!-- Dropdown menu --> */}
                         </li>
@@ -183,7 +183,7 @@ export const SideNavBar = () => {
 
                             </div>
                             <div>
-                                <Image className={`${openFilterPlayers ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
+                                <Image className={`transition-all ${openFilterPlayers ? "rotate-90" : "-rotate-90"} `} src="/image/img.png" width={20} height={20} alt="" />
                             </div>
                                 {/* <!-- Dropdown menu --> */}
                         </li>
