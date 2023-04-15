@@ -31,7 +31,7 @@ export const BoardGameCard = () => {
                             </li>
                             <li className="px-3 py-0.5 ml-2 mt-2 bg-orange-600 rounded-xl text-white text-sm flex" >
                                 <Image className="mr-1" src="/image/Chart.png" alt="" width={20} height={20}/>
-                                90 à 120
+                                90+
                             </li>
                         </ul>
                     </div>
