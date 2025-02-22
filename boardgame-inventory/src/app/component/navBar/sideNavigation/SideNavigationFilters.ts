@@ -1,4 +1,9 @@
-export const sideNavigationFilter = {
+export type SideNavigationFilter = {
+  name: string;
+  value: string;
+};
+
+export const SideNavigationFilter = {
   genre: [
     {
       name: "Plateau",

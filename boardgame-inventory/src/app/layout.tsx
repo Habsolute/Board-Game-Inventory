@@ -1,6 +1,6 @@
 import "./globals.css";
-import { Header } from "./component/header/header";
-import { SideNavBar } from "./component/navBar/sideNavigation/sideNavBar";
+import { Header } from "./component/header/Header";
+import { SideNavBar } from "./component/navBar/sideNavigation/SideNavBar";
 
 export default function RootLayout({
   children,
