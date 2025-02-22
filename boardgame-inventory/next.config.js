@@ -17,6 +17,8 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "picsum.photos",
+        hostname: "cf.geekdo-images.com",
+        pathname: "/**",
       },
     ],
   },

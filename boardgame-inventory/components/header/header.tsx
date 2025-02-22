@@ -1,4 +1,4 @@
-import { TopNavBar } from "../navBar/topNavigation/TopNavBar";
+import { TopNavBar } from "components/topNavigation/TopNavBar";
 
 export const Header = () => {
   return (
