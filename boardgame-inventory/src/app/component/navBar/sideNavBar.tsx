@@ -1,8 +1,9 @@
-"use client"; // this is a client component
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { sideNavigationFilter } from "./sideNavigationRoute";
 
 export const SideNavBar = () => {
   const [openNavBar, setOpenNavBar] = useState<boolean>(true);
@@ -50,13 +51,7 @@ export const SideNavBar = () => {
             openNavBar ? "w-64" : "w-20"
           } duration-500 h-screen p-5 bg-slate-900 relative md:w-30`}
         >
-          {/* <Image onClick={HandleOpenCloseNavbar} className={`${!openNavBar && "rotate-180"} absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 bg-cyan-500`} src="/image/img.png" width={30} height={30} alt="" /> */}
-          {/* <Link href={"/"} className='flex gap-x-4 items-center p-2'>
-                        <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/>
-                        <h1 className={`${!openNavBar && "hidden"} text-white origin-left font-medium text-xl duration-300`}>Jeux de Société</h1>
-                    </Link> */}
           <div className="flex gap-x-4 items-center p-2">
-            {/* <Image className={`cursor-pointer`} src="/image/logo.png" width={30} height={30} alt=""/> */}
             <h1
               className={`${
                 !openNavBar && "hidden"
@@ -112,30 +107,14 @@ export const SideNavBar = () => {
                 className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold"
                 aria-labelledby="dropdownLargeButton"
               >
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Plateau
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Carte
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Coopération
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Adresse
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Connaissances
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Mémoire
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Stratégie
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Dès
-                </li>
+                {sideNavigationFilter.genre.map((genre) => (
+                  <li
+                    key={genre.name}
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer"
+                  >
+                    {genre.name}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -184,24 +163,14 @@ export const SideNavBar = () => {
                 className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold"
                 aria-labelledby="dropdownLargeButton"
               >
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  5 ans et moins
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  7 ans et moins
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  8+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  10+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  12+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  14+
-                </li>
+                {sideNavigationFilter.age.map((age) => (
+                  <li
+                    key={age.name}
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer"
+                  >
+                    {age.name}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -249,21 +218,14 @@ export const SideNavBar = () => {
                 className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold"
                 aria-labelledby="dropdownLargeButton"
               >
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Moins de 30 Minutes
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Moins 40 Minutes
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Moins 60 Minutes
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Moins 90 Minutes
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Plus de 90 Minutes
-                </li>
+                {sideNavigationFilter.time.map((time) => (
+                  <li
+                    key={time.name}
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer"
+                  >
+                    {time.name}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -312,33 +274,14 @@ export const SideNavBar = () => {
                 className="py-2 text-sm text-sky-900 dark:text-gray-900 font-semibold"
                 aria-labelledby="dropdownLargeButton"
               >
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  Solo
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  2+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  3+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  4+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  5+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  6+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  7+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  8+
-                </li>
-                <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer">
-                  10+
-                </li>
+                {sideNavigationFilter.players.map((players) => (
+                  <li
+                    key={players.name}
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer"
+                  >
+                    {players.name}
+                  </li>
+                ))}
               </ul>
             </div>
           </ul>
