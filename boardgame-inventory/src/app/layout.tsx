@@ -1,11 +1,11 @@
-import './globals.css'
-import { Header } from './component/header/header'
-import { SideNavBar } from './component/navBar/sideNavBar'
+import "./globals.css";
+import { Header } from "./component/header/Header";
+import { SideNavBar } from "./component/navBar/sideNavigation/SideNavBar";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -16,11 +16,11 @@ export default function RootLayout({
       <head />
       <body>
         <Header />
-        <div className='flex'>
+        <div className="flex">
           <SideNavBar />
           {children}
         </div>
       </body>
     </html>
-  )
+  );
 }

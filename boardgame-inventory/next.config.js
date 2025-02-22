@@ -1,18 +1,25 @@
-const { hostname } = require('os')
+const { hostname } = require("os");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  webpack: (config) => {
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    };
+    return config;
+  },
   experimental: {
     appDir: true,
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: "picsum.photos"
+        protocol: "https",
+        hostname: "picsum.photos",
       },
-    ]
-  }
-}
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
