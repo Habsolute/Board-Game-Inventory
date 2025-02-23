@@ -1,14 +1,20 @@
 export interface BoardGameType {
   id: string;
   name: string;
-  yearPublished?: number;
-  description?: string;
-  image?: string;
-  thumbnail?: string;
-  minPlayers?: number;
-  maxPlayers?: number;
-  playingTime?: number;
-  minAge?: number;
+  yearPublished: number | null;
+  description: string;
+  image: string;
+  thumbnail: string;
+  minPlayers: number | null;
+  maxPlayers: number | null;
+  playingTime: number | null;
+  minAge: number | null;
+  status?: {
+    own: boolean;
+    forTrade: boolean;
+    want: boolean;
+    wantToPlay: boolean;
+  };
 }
 
 export interface BGGSearchResult {
@@ -24,6 +30,8 @@ export interface BGGGameDetails {
   items: {
     item: [
       {
+        $: any;
+        status: any;
         name: [{ $: { value: string } }];
         yearpublished: [{ $: { value: string } }];
         description: [string];

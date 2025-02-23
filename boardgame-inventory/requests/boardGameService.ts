@@ -52,6 +52,7 @@ export async function getGameDetails(
       minPlayers: Number(gameDetails.minplayers?.[0].$.value),
       maxPlayers: Number(gameDetails.maxplayers?.[0].$.value),
       playingTime: Number(gameDetails.playingtime?.[0].$.value),
+      minAge: Number(gameDetails.minage?.[0].$.value),
     };
   } catch (error) {
     console.error("Error fetching game details:", error);
@@ -91,7 +92,7 @@ export async function getUserCollection(
           const details = await getBoardGameDetails(item.$.objectid);
           const gameDetails = details.items.item[0];
 
-          return {
+          const game: BoardGameType = {
             id: item.$.objectid,
             name: gameDetails.name[0].$.value,
             yearPublished:
@@ -110,6 +111,7 @@ export async function getUserCollection(
               wantToPlay: item.status?.[0]?.$.wanttoplay === "1",
             },
           };
+          return game;
         } catch (error) {
           console.error(`Error processing game ${item.$.objectid}:`, error);
           return null;
