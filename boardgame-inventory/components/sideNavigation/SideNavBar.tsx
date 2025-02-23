@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { SideNavigationFilter } from "./SideNavigationFilters";
 import { SideNavigationOnglet } from "./SideNavigationOnglet";
+import { DateIcon } from "components/icons/dateIcon/DateIcon";
 
 export const SideNavBar = () => {
   /**
@@ -25,16 +26,29 @@ export const SideNavBar = () => {
 
       <ul className="menu">
         {/* ---------------------------------Filtre pour Genre ----------------------------- */}
-        <SideNavigationOnglet label="Genre" data={SideNavigationFilter.genre} />
+        <SideNavigationOnglet
+          icon={<DateIcon className="w-6 h-6" color="white" />}
+          label="Genre"
+          data={SideNavigationFilter.genre}
+        />
 
         {/* ---------------------------------Filtre pour l'age ----------------------------- */}
-        <SideNavigationOnglet label="Age" data={SideNavigationFilter.age} />
+        <SideNavigationOnglet
+          icon={<DateIcon className="w-6 h-6" color="white" />}
+          label="Age"
+          data={SideNavigationFilter.age}
+        />
 
         {/* ---------------------------------Filtre pour temps ----------------------------- */}
-        <SideNavigationOnglet label="Temps" data={SideNavigationFilter.time} />
+        <SideNavigationOnglet
+          icon={<DateIcon className="w-6 h-6" color="white" />}
+          label="Temps"
+          data={SideNavigationFilter.time}
+        />
 
         {/* ---------------------------------Filtre pour joueurs ----------------------------- */}
         <SideNavigationOnglet
+          icon={<DateIcon className="w-6 h-6" color="white" />}
           label="Joueurs"
           data={SideNavigationFilter.players}
         />

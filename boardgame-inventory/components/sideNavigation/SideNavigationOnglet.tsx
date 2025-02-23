@@ -5,11 +5,13 @@ import { SideNavigationFilter } from "./SideNavigationFilters";
 interface SideNavigationOngletProps {
   label: string;
   data: SideNavigationFilter[];
+  icon: React.ReactNode;
 }
 
 export const SideNavigationOnglet = ({
   label,
   data,
+  icon,
 }: SideNavigationOngletProps) => {
   console.log(label);
   const [openFilter, setOpenFilter] = useState<boolean>(false);
@@ -23,13 +25,7 @@ export const SideNavigationOnglet = ({
         className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
       >
         <div className={`flex`}>
-          <Image
-            className={`mr-4`}
-            src="/image/Chart.png"
-            width={25}
-            height={25}
-            alt="chart"
-          />
+          {icon}
           <span className={`origin-left duration-200`}>{label}</span>
         </div>
         <div>
