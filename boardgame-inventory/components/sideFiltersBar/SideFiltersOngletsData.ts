@@ -1,9 +1,9 @@
-export type SideNavigationFilter = {
+export type SideFiltersOngletsData = {
   name: string;
   value: string;
 };
 
-export const SideNavigationFilter = {
+export const SideFiltersOngletsData = {
   genre: [
     {
       name: "Plateau",

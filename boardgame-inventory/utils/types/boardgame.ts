@@ -8,6 +8,7 @@ export interface BoardGameType {
   minPlayers?: number;
   maxPlayers?: number;
   playingTime?: number;
+  minAge?: number;
 }
 
 export interface BGGSearchResult {
@@ -31,6 +32,7 @@ export interface BGGGameDetails {
         minplayers: [{ $: { value: string } }];
         maxplayers: [{ $: { value: string } }];
         playingtime: [{ $: { value: string } }];
+        minage: [{ $: { value: string } }];
       }
     ];
   };

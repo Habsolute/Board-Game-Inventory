@@ -1,6 +1,6 @@
 import { Header } from "components/header/header";
 import "./globals.css";
-import { SideNavBar } from "components/sideNavigation/SideNavBar";
+import { SideFiltersBar } from "components/sideFiltersBar/SideFiltersBar";
 
 export default function RootLayout({
   children,
@@ -9,15 +9,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>
+      <body className="min-h-screen">
         <Header />
         <div className="flex">
-          <SideNavBar />
+          <SideFiltersBar />
           {children}
         </div>
       </body>

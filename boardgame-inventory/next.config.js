@@ -13,10 +13,15 @@ const nextConfig = {
     appDir: true,
   },
   images: {
+    domains: ["picsum.photos", "cf.geekdo-images.com"],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "picsum.photos",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "cf.geekdo-images.com",
         pathname: "/**",
       },

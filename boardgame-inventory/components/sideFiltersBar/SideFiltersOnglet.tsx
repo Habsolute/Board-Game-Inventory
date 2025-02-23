@@ -1,17 +1,20 @@
 import Image from "next/image";
 import { useState } from "react";
-import { SideNavigationFilter } from "./SideNavigationFilters";
-
+import { SideFiltersOngletsData } from "./SideFiltersOngletsData";
+import classNames from "classnames";
 interface SideNavigationOngletProps {
   label: string;
-  data: SideNavigationFilter[];
+  data: SideFiltersOngletsData[];
+  icon: React.ReactNode;
+  backgroundColorIfSelected: string;
 }
 
-export const SideNavigationOnglet = ({
+export const SideFiltersOnglet = ({
   label,
   data,
+  icon,
+  backgroundColorIfSelected,
 }: SideNavigationOngletProps) => {
-  console.log(label);
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   const handleFilterOpen = () => {
     setOpenFilter((prevState) => !prevState);
@@ -20,16 +23,16 @@ export const SideNavigationOnglet = ({
     <>
       <li
         onClick={handleFilterOpen}
-        className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
+        // className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
+        className={classNames(
+          "flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700",
+          {
+            [`hoverbg-${backgroundColorIfSelected}`]: openFilter,
+          }
+        )}
       >
-        <div className={`flex`}>
-          <Image
-            className={`mr-4`}
-            src="/image/Chart.png"
-            width={25}
-            height={25}
-            alt="chart"
-          />
+        <div className="flex gap-2">
+          {icon}
           <span className={`origin-left duration-200`}>{label}</span>
         </div>
         <div>
@@ -44,6 +47,7 @@ export const SideNavigationOnglet = ({
           />
         </div>
       </li>
+
       {/* <!-- Dropdown menu --> */}
       <div
         id="dropdownNavbar"
