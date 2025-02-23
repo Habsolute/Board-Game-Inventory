@@ -13,7 +13,6 @@ export const SideNavigationOnglet = ({
   data,
   icon,
 }: SideNavigationOngletProps) => {
-  console.log(label);
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   const handleFilterOpen = () => {
     setOpenFilter((prevState) => !prevState);
@@ -24,7 +23,7 @@ export const SideNavigationOnglet = ({
         onClick={handleFilterOpen}
         className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
       >
-        <div className={`flex`}>
+        <div className="flex gap-2">
           {icon}
           <span className={`origin-left duration-200`}>{label}</span>
         </div>
@@ -40,6 +39,7 @@ export const SideNavigationOnglet = ({
           />
         </div>
       </li>
+
       {/* <!-- Dropdown menu --> */}
       <div
         id="dropdownNavbar"

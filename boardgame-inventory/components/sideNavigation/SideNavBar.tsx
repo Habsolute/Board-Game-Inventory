@@ -5,6 +5,10 @@ import { useState } from "react";
 import { SideNavigationFilter } from "./SideNavigationFilters";
 import { SideNavigationOnglet } from "./SideNavigationOnglet";
 import { DateIcon } from "components/icons/dateIcon/DateIcon";
+import { PersonIcon } from "components/icons/personIcon/PersonIcon";
+import { TimeIcon } from "components/icons/timeIcon/TimeIcon";
+import { AgeIcon } from "components/icons/ageIcon/AgeIcon";
+import { GenreIcon } from "components/icons/genreIcon/GenreIcon";
 
 export const SideNavBar = () => {
   /**
@@ -27,28 +31,28 @@ export const SideNavBar = () => {
       <ul className="menu">
         {/* ---------------------------------Filtre pour Genre ----------------------------- */}
         <SideNavigationOnglet
-          icon={<DateIcon className="w-6 h-6" color="white" />}
+          icon={<GenreIcon className="w-6 h-6" color="white" />}
           label="Genre"
           data={SideNavigationFilter.genre}
         />
 
         {/* ---------------------------------Filtre pour l'age ----------------------------- */}
         <SideNavigationOnglet
-          icon={<DateIcon className="w-6 h-6" color="white" />}
+          icon={<AgeIcon className="w-6 h-6" color="white" />}
           label="Age"
           data={SideNavigationFilter.age}
         />
 
         {/* ---------------------------------Filtre pour temps ----------------------------- */}
         <SideNavigationOnglet
-          icon={<DateIcon className="w-6 h-6" color="white" />}
+          icon={<TimeIcon className="w-6 h-6" color="white" />}
           label="Temps"
           data={SideNavigationFilter.time}
         />
 
         {/* ---------------------------------Filtre pour joueurs ----------------------------- */}
         <SideNavigationOnglet
-          icon={<DateIcon className="w-6 h-6" color="white" />}
+          icon={<PersonIcon className="w-6 h-6" color="white" />}
           label="Joueurs"
           data={SideNavigationFilter.players}
         />

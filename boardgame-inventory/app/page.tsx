@@ -11,7 +11,7 @@ export default async function Home() {
   // const [games, setGames] = useState<BoardGameType[]>([]);
   const games = await searchGames("catan");
 
-  console.log(games);
+  // console.log(games);
 
   return (
     <main style={{ width: "100%" }} className="bg-slate-200 p-7">

@@ -40,17 +40,17 @@ export const BoardGameCard = ({ game }: BoardGameCardProps) => {
             <BoardGameCardTable
               icon={<DateIcon className="w-6 h-6" color="white" />}
               label={game.yearPublished?.toString() || ""}
-              backgroundColor="blue-600"
+              backgroundColor="#2563eb"
             />
             <BoardGameCardTable
               icon={<PersonIcon className="w-6 h-6" color="white" />}
               label={`${game.minPlayers} - ${game.maxPlayers}`}
-              backgroundColor="pink-600"
+              backgroundColor="#db2777"
             />
             <BoardGameCardTable
               icon={<TimeIcon className="w-6 h-6" color="white" />}
               label={`${game.playingTime} min`}
-              backgroundColor="orange-600"
+              backgroundColor="#ea580c"
             />
           </ul>
         </div>
