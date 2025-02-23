@@ -22,3 +22,11 @@ export async function getBoardGameDetails(
   const xmlData = await response.text();
   return parseXMLPromise(xmlData) as Promise<BGGGameDetails>;
 }
+
+export async function getBoardGameCollection(username: string) {
+  const response = await fetch(
+    `https://boardgamegeek.com/xmlapi2/collection?username=${username}&stats=1`
+  );
+  const xml = await response.text();
+  return parseXMLPromise(xml) as Promise<BGGGameDetails>;
+}
