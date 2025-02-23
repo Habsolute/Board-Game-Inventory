@@ -25,7 +25,11 @@ export const TopNavBar = () => {
       <div className="flex text-base">
         <ul className="flex justify-end text-white font-bold mr-14 ">
           {Object.entries(TopNavigationRoute).map(([key, value]) => (
-            <TopNavigationOnglet key={key} label={key} href={value} />
+            <TopNavigationOnglet
+              key={key}
+              label={value.label}
+              href={value.href}
+            />
           ))}
         </ul>
       </div>

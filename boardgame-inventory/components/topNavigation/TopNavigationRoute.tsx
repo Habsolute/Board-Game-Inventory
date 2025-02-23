@@ -1,9 +1,21 @@
 type TopNavigationRoute = {
-  home: string;
-  boardGame: string;
+  accueil: {
+    label: string;
+    href: string;
+  };
+  pretDeJeu: {
+    label: string;
+    href: string;
+  };
 };
 
 export const TopNavigationRoute: TopNavigationRoute = {
-  home: "/",
-  boardGame: "/boardGame",
+  accueil: {
+    label: "Accueil",
+    href: "/",
+  },
+  pretDeJeu: {
+    label: "Pret de jeu",
+    href: "/pretDeJeu",
+  },
 };
