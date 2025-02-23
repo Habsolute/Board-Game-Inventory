@@ -1,6 +1,6 @@
 import { Header } from "components/header/header";
 import "./globals.css";
-import { SideNavBar } from "components/sideNavigation/SideNavBar";
+import { SideFiltersBar } from "components/sideFiltersBar/SideFiltersBar";
 
 export default function RootLayout({
   children,
@@ -17,7 +17,7 @@ export default function RootLayout({
       <body>
         <Header />
         <div className="flex">
-          <SideNavBar />
+          <SideFiltersBar />
           {children}
         </div>
       </body>

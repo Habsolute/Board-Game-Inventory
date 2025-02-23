@@ -5,6 +5,7 @@ import { BoardGameType } from "utils/types/boardgame";
 import { BoardGameCardTable } from "./BoardGameCardTable";
 import { PersonIcon } from "components/icons/personIcon/PersonIcon";
 import { TimeIcon } from "components/icons/timeIcon/TimeIcon";
+import { AgeV2Icon } from "components/icons/ageIcon/AgeV2Icon";
 
 interface BoardGameCardProps {
   game: BoardGameType;
@@ -40,17 +41,22 @@ export const BoardGameCard = ({ game }: BoardGameCardProps) => {
             <BoardGameCardTable
               icon={<DateIcon className="w-6 h-6" color="white" />}
               label={game.yearPublished?.toString() || ""}
-              backgroundColor="#2563eb"
+              className="bg-blueOnglet"
+            />
+            <BoardGameCardTable
+              icon={<AgeV2Icon className="w-6 h-6" color="white" />}
+              label={`${game.minAge} ans +`}
+              className="bg-greenOnglet"
             />
             <BoardGameCardTable
               icon={<PersonIcon className="w-6 h-6" color="white" />}
               label={`${game.minPlayers} - ${game.maxPlayers}`}
-              backgroundColor="#db2777"
+              className="bg-pinkOnglet"
             />
             <BoardGameCardTable
               icon={<TimeIcon className="w-6 h-6" color="white" />}
               label={`${game.playingTime} min`}
-              backgroundColor="#ea580c"
+              className="bg-orangeOnglet"
             />
           </ul>
         </div>

@@ -4,6 +4,7 @@ import { BoardGameType } from "utils/types/boardgame";
 export async function searchGames(query: string): Promise<BoardGameType[]> {
   try {
     const searchResults = await searchBoardGame(query);
+
     const games = await Promise.all(
       searchResults.items.item.slice(0, 10).map(async (item) => {
         const details = await getBoardGameDetails(item.$.id);
@@ -19,6 +20,7 @@ export async function searchGames(query: string): Promise<BoardGameType[]> {
           minPlayers: Number(gameDetails.minplayers?.[0].$.value),
           maxPlayers: Number(gameDetails.maxplayers?.[0].$.value),
           playingTime: Number(gameDetails.playingtime?.[0].$.value),
+          minAge: Number(gameDetails.minage?.[0].$.value),
         };
       })
     );
