@@ -8,8 +8,6 @@ export default async function GamePage({
 }) {
   const game = await getGameDetails(slug);
 
-  console.log(game);
-
   if (!game) {
     return <div>Game not found</div>;
   }

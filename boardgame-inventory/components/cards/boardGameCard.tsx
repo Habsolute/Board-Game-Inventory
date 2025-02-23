@@ -21,7 +21,7 @@ export const BoardGameCard = ({ game }: BoardGameCardProps) => {
       <div className="boardgameImage flex flex-col h-full">
         <div>
           <Image
-            className="rounded-md"
+            className="rounded-md h-[200px]"
             src={
               game.image || game.thumbnail || "https://picsum.photos/250/250"
             }
