@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { SideNavigationFilter } from "./SideNavigationFilters";
-import { SideNavigationOnglet } from "./SideNavigationOnglet";
+import { SideFiltersOnglet } from "./SideFiltersOnglet";
 import { DateIcon } from "components/icons/dateIcon/DateIcon";
 import { PersonIcon } from "components/icons/personIcon/PersonIcon";
 import { TimeIcon } from "components/icons/timeIcon/TimeIcon";
 import { AgeIcon } from "components/icons/ageIcon/AgeIcon";
 import { GenreIcon } from "components/icons/genreIcon/GenreIcon";
+import { SideFiltersOngletsData } from "./SideFiltersOngletsData";
 
-export const SideNavBar = () => {
+export const SideFiltersBar = () => {
   /**
    *  Pour les filtre, Rajouter le genre, age, temps et joueurs quand il est sélectionner dans la barre de naivation
    * La personne va pourvoir désélectionner en pesant sur un x
@@ -24,37 +24,41 @@ export const SideNavBar = () => {
         <h1
           className={` text-white origin-left font-medium text-xl duration-300`}
         >
-          Filtre
+          Filtres
         </h1>
       </div>
 
       <ul className="menu">
         {/* ---------------------------------Filtre pour Genre ----------------------------- */}
-        <SideNavigationOnglet
+        <SideFiltersOnglet
           icon={<GenreIcon className="w-6 h-6" color="white" />}
           label="Genre"
-          data={SideNavigationFilter.genre}
+          data={SideFiltersOngletsData.genre}
+          backgroundColorIfSelected="blueOnglet"
         />
 
         {/* ---------------------------------Filtre pour l'age ----------------------------- */}
-        <SideNavigationOnglet
+        <SideFiltersOnglet
           icon={<AgeIcon className="w-6 h-6" color="white" />}
           label="Age"
-          data={SideNavigationFilter.age}
+          data={SideFiltersOngletsData.age}
+          backgroundColorIfSelected="blueOnglet"
         />
 
         {/* ---------------------------------Filtre pour temps ----------------------------- */}
-        <SideNavigationOnglet
+        <SideFiltersOnglet
           icon={<TimeIcon className="w-6 h-6" color="white" />}
           label="Temps"
-          data={SideNavigationFilter.time}
+          data={SideFiltersOngletsData.time}
+          backgroundColorIfSelected="blueOnglet"
         />
 
         {/* ---------------------------------Filtre pour joueurs ----------------------------- */}
-        <SideNavigationOnglet
+        <SideFiltersOnglet
           icon={<PersonIcon className="w-6 h-6" color="white" />}
           label="Joueurs"
-          data={SideNavigationFilter.players}
+          data={SideFiltersOngletsData.players}
+          backgroundColorIfSelected="blueOnglet"
         />
       </ul>
     </div>

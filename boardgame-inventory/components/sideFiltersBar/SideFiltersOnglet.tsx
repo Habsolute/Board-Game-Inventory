@@ -1,17 +1,19 @@
 import Image from "next/image";
 import { useState } from "react";
-import { SideNavigationFilter } from "./SideNavigationFilters";
-
+import { SideFiltersOngletsData } from "./SideFiltersOngletsData";
+import classNames from "classnames";
 interface SideNavigationOngletProps {
   label: string;
-  data: SideNavigationFilter[];
+  data: SideFiltersOngletsData[];
   icon: React.ReactNode;
+  backgroundColorIfSelected: string;
 }
 
-export const SideNavigationOnglet = ({
+export const SideFiltersOnglet = ({
   label,
   data,
   icon,
+  backgroundColorIfSelected,
 }: SideNavigationOngletProps) => {
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   const handleFilterOpen = () => {
@@ -21,7 +23,13 @@ export const SideNavigationOnglet = ({
     <>
       <li
         onClick={handleFilterOpen}
-        className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
+        // className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
+        className={classNames(
+          "flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700",
+          {
+            [`hoverbg-${backgroundColorIfSelected}`]: openFilter,
+          }
+        )}
       >
         <div className="flex gap-2">
           {icon}
