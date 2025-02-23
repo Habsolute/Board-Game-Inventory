@@ -6,7 +6,7 @@ export async function searchGames(query: string): Promise<BoardGameType[]> {
     const searchResults = await searchBoardGame(query);
 
     const games = await Promise.all(
-      searchResults.items.item.slice(0, 10).map(async (item) => {
+      searchResults.items.item.slice(0, 100).map(async (item) => {
         const details = await getBoardGameDetails(item.$.id);
         const gameDetails = details.items.item[0];
 
@@ -15,8 +15,8 @@ export async function searchGames(query: string): Promise<BoardGameType[]> {
           name: gameDetails.name[0].$.value,
           yearPublished: Number(gameDetails.yearpublished?.[0].$.value),
           description: gameDetails.description?.[0],
-          image: gameDetails.image?.[0],
-          thumbnail: gameDetails.thumbnail?.[0],
+          image: gameDetails.image?.[0] || "",
+          thumbnail: gameDetails.thumbnail?.[0] || "",
           minPlayers: Number(gameDetails.minplayers?.[0].$.value),
           maxPlayers: Number(gameDetails.maxplayers?.[0].$.value),
           playingTime: Number(gameDetails.playingtime?.[0].$.value),
