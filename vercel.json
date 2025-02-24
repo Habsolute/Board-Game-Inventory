@@ -6,7 +6,7 @@
   },
   "framework": "nextjs",
   "functions": {
-    "api/*": {
+    "app/**/*": {
       "maxDuration": 60
     }
   }
