@@ -64,9 +64,8 @@ export async function getUserCollection(
   username: string
 ): Promise<BoardGameType[]> {
   try {
-    // Augmenter le nombre de tentatives et le délai entre chaque tentative
     let retries = 5;
-    let delay = 2000; // 2 secondes
+    let delay = 2000;
     let collection = null;
 
     // Première tentative
@@ -82,74 +81,62 @@ export async function getUserCollection(
       await new Promise((resolve) => setTimeout(resolve, delay));
       collection = await getBoardGameCollection(username);
       retries--;
-      // Augmenter progressivement le délai entre les tentatives
-      delay = Math.min(delay * 1.5, 10000); // Max 10 secondes
+      delay = Math.min(delay * 1.5, 10000);
     }
 
-    // Vérifier si nous avons des items
     if (!collection?.items?.item) {
       console.log("No items found in collection after all retries");
       return [];
     }
 
-    // Assurer que item est toujours un tableau
     const items = Array.isArray(collection.items.item)
       ? collection.items.item
       : [collection.items.item];
 
     console.log(`Processing ${items.length} games from collection`);
 
-    // Augmenter la taille du batch et réduire le délai
-    const batchSize = 40; // Augmenté de 10 à 40
-    const games: BoardGameType[] = [];
+    // Traiter tous les jeux en une seule fois
+    const gamesResults = await Promise.all(
+      items.map(async (item) => {
+        try {
+          const details = await getBoardGameDetails(item.$.objectid);
+          const gameDetails = details.items.item[0];
 
-    for (let i = 0; i < items.length; i += batchSize) {
-      const batch = items.slice(i, i + batchSize);
-      const batchResults = await Promise.all(
-        batch.map(async (item) => {
-          try {
-            const details = await getBoardGameDetails(item.$.objectid);
-            const gameDetails = details.items.item[0];
+          // S'assurer que l'objet retourné correspond exactement au type BoardGameType
+          const game: BoardGameType = {
+            id: item.$.objectid,
+            name: gameDetails.name[0].$.value,
+            yearPublished:
+              Number(gameDetails.yearpublished?.[0]?.$.value) || null,
+            description: gameDetails.description?.[0] || "",
+            image: gameDetails.image?.[0] || "",
+            thumbnail: gameDetails.thumbnail?.[0] || "",
+            minPlayers: Number(gameDetails.minplayers?.[0]?.$.value) || null,
+            maxPlayers: Number(gameDetails.maxplayers?.[0]?.$.value) || null,
+            playingTime: Number(gameDetails.playingtime?.[0]?.$.value) || null,
+            minAge: Number(gameDetails.minage?.[0]?.$.value) || null,
+            // S'assurer que status est toujours défini avec des valeurs par défaut
+            status: {
+              own: item.status?.[0]?.$.own === "1" || false,
+              forTrade: item.status?.[0]?.$.fortrade === "1" || false,
+              want: item.status?.[0]?.$.want === "1" || false,
+              wantToPlay: item.status?.[0]?.$.wanttoplay === "1" || false,
+            },
+          };
 
-            const game: BoardGameType = {
-              id: item.$.objectid,
-              name: gameDetails.name[0].$.value,
-              yearPublished:
-                Number(gameDetails.yearpublished?.[0]?.$.value) || null,
-              description: gameDetails.description?.[0] || "",
-              image: gameDetails.image?.[0] || "",
-              thumbnail: gameDetails.thumbnail?.[0] || "",
-              minPlayers: Number(gameDetails.minplayers?.[0]?.$.value) || null,
-              maxPlayers: Number(gameDetails.maxplayers?.[0]?.$.value) || null,
-              playingTime:
-                Number(gameDetails.playingtime?.[0]?.$.value) || null,
-              minAge: Number(gameDetails.minage?.[0]?.$.value) || null,
-              status: {
-                own: item.status?.[0]?.$.own === "1",
-                forTrade: item.status?.[0]?.$.fortrade === "1",
-                want: item.status?.[0]?.$.want === "1",
-                wantToPlay: item.status?.[0]?.$.wanttoplay === "1",
-              },
-            };
+          return game;
+        } catch (error) {
+          console.error(`Error processing game ${item.$.objectid}:`, error);
+          return null;
+        }
+      })
+    );
 
-            return game;
-          } catch (error) {
-            console.error(`Error processing game ${item.$.objectid}:`, error);
-            return null;
-          }
-        })
-      );
-
-      games.push(
-        ...batchResults.filter((game): game is BoardGameType => game !== null)
-      );
-      console.log(`Processed batch of games. Total processed: ${games.length}`);
-
-      // Réduire le délai entre les lots
-      if (i + batchSize < items.length) {
-        await new Promise((resolve) => setTimeout(resolve, 200)); // Réduit de 500ms à 200ms
-      }
-    }
+    // Modifier le type guard pour être plus précis
+    const games = gamesResults.filter(
+      (game): game is BoardGameType =>
+        game !== null && typeof game.status === "object" && game.status !== null
+    );
 
     console.log(`Final collection size: ${games.length} games`);
     return games;
