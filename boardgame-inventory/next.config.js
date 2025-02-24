@@ -9,9 +9,6 @@ const nextConfig = {
     };
     return config;
   },
-  experimental: {
-    appDir: true,
-  },
   images: {
     domains: ["picsum.photos", "cf.geekdo-images.com"],
     remotePatterns: [

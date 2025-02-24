@@ -16,6 +16,6 @@ export const TopNavigationRoute: TopNavigationRoute = {
   },
   pretDeJeu: {
     label: "Pret de jeu",
-    href: "/pretDeJeu",
+    href: "/pret-de-jeu",
   },
 };
