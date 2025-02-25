@@ -19,7 +19,7 @@ export const SideFiltersBar = () => {
    */
 
   return (
-    <div className={`p-4 bg-slate-900 relative w-60`}>
+    <div className="p-4 bg-slate-900 relative w-60 h-full">
       <div className="flex gap-x-4 items-center p-2">
         <h1
           className={` text-white origin-left font-medium text-xl duration-300`}

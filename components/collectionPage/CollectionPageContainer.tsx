@@ -20,13 +20,13 @@ export const CollectionPageContainer = ({
   );
 
   return (
-    <div className="flex flex-col gap-4 max-h-[calc(100vh-100px)] min-h-[calc(100vh-100px)] overflow-y-auto">
+    <div className="flex flex-col flex-1 gap-4 max-h-[calc(100vh-100px)] min-h-full overflow-y-auto">
       <SearchAndFiltersBarContainer
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
       />
 
-      <div className="grid grid-cols-5 gap-4 px-4">
+      <div className="flex flex-wrap justify-between gap-4 px-4">
         {filteredGames.map((game) => (
           <BoardGameCard key={game.id} game={game} />
         ))}

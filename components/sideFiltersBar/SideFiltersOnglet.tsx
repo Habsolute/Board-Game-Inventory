@@ -16,14 +16,26 @@ export const SideFiltersOnglet = ({
   backgroundColorIfSelected,
 }: SideNavigationOngletProps) => {
   const [openFilter, setOpenFilter] = useState<boolean>(false);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const handleFilterOpen = () => {
     setOpenFilter((prevState) => !prevState);
   };
+
+  const handleFilterClick = (filterName: string) => {
+    setSelectedFilters((prevFilters) => {
+      if (prevFilters.includes(filterName)) {
+        return prevFilters.filter((filter) => filter !== filterName);
+      }
+      return [...prevFilters, filterName];
+    });
+  };
+
+  console.log(selectedFilters);
+
   return (
     <>
       <li
         onClick={handleFilterOpen}
-        // className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
         className={classNames(
           "flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700",
           {
@@ -62,7 +74,14 @@ export const SideFiltersOnglet = ({
           {data.map((item) => (
             <li
               key={item.name}
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer"
+              className={classNames(
+                "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer",
+                {
+                  "bg-gray-100 dark:bg-gray-800 dark:text-white":
+                    selectedFilters.includes(item.name),
+                }
+              )}
+              onClick={() => handleFilterClick(item.name)}
             >
               {item.name}
             </li>

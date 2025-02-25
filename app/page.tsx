@@ -10,10 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 export default async function Home() {
   const collection = await getUserCollection("YtaiTouf");
 
-  console.log(collection.length);
-
   return (
-    <main className="bg-slate-200 w-full h-full">
+    <main className="bg-slate-200 w-full min-h-full">
       <CollectionPageContainer initialCollection={collection} />
     </main>
   );
