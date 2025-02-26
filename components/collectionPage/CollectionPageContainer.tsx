@@ -51,8 +51,6 @@ export const CollectionPageContainer = ({
     return nameMatch && playersMatch && ageMatch && timeMatch;
   });
 
-  console.log("filteredGames", filteredGames);
-
   return (
     <div className="flex flex-col flex-1 gap-4 max-h-[calc(100vh-100px)] min-h-full overflow-y-auto">
       <SearchAndFiltersBarContainer
