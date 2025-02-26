@@ -35,14 +35,12 @@ export const SideFiltersOnglet = ({
   };
 
   return (
-    <>
+    <div className="border-b-4 pb-2 border-white">
       <li
         onClick={handleFilterOpen}
         className={classNames(
-          "flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700",
-          {
-            [`hoverbg-${backgroundColorIfSelected}`]: openFilter,
-          }
+          // "flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700",
+          `flex justify-between p-4 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items  bg-${color}`
         )}
       >
         <div className="flex gap-2">
@@ -77,7 +75,8 @@ export const SideFiltersOnglet = ({
             <li
               key={item.name}
               className={classNames(
-                "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white cursor-pointer",
+                // "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white cursor-pointer",
+                `block px-4 py-2 hover:bg-${color} dark:hover:text-white cursor-pointer`,
                 {
                   [`bg-${color} dark:bg-${color} dark:text-white`]:
                     selectedFilter === item.name,
@@ -90,6 +89,6 @@ export const SideFiltersOnglet = ({
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
