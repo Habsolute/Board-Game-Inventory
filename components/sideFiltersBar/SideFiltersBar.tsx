@@ -9,14 +9,17 @@ import { TimeIcon } from "components/icons/timeIcon/TimeIcon";
 import { AgeIcon } from "components/icons/ageIcon/AgeIcon";
 import { GenreIcon } from "components/icons/genreIcon/GenreIcon";
 import { SideFiltersOngletsData } from "./SideFiltersOngletsData";
+import { useFiltersCollection } from "providers/FiltersCollectionProvider";
 
 export const SideFiltersBar = () => {
   /**
    *  Pour les filtre, Rajouter le genre, age, temps et joueurs quand il est sélectionner dans la barre de naivation
    * La personne va pourvoir désélectionner en pesant sur un x
    * Si possible le metre dans la barre de navigation de hauche.
-   * MAGALO
    */
+
+  const { setAgeFilter, setTimeFilter, setPlayersFilter } =
+    useFiltersCollection();
 
   return (
     <div className="p-4 bg-slate-900 relative w-60 h-full">
@@ -30,12 +33,13 @@ export const SideFiltersBar = () => {
 
       <ul className="menu">
         {/* ---------------------------------Filtre pour Genre ----------------------------- */}
-        <SideFiltersOnglet
+        {/* <SideFiltersOnglet
           icon={<GenreIcon className="w-6 h-6" color="white" />}
           label="Genre"
           data={SideFiltersOngletsData.genre}
           backgroundColorIfSelected="blueOnglet"
-        />
+          onFilterChange={(filter) => setGenreFilter(filter)}
+        /> */}
 
         {/* ---------------------------------Filtre pour l'age ----------------------------- */}
         <SideFiltersOnglet
@@ -43,6 +47,8 @@ export const SideFiltersBar = () => {
           label="Age"
           data={SideFiltersOngletsData.age}
           backgroundColorIfSelected="blueOnglet"
+          onFilterChange={(filter) => setAgeFilter(filter)}
+          color="greenOnglet"
         />
 
         {/* ---------------------------------Filtre pour temps ----------------------------- */}
@@ -51,6 +57,8 @@ export const SideFiltersBar = () => {
           label="Temps"
           data={SideFiltersOngletsData.time}
           backgroundColorIfSelected="blueOnglet"
+          onFilterChange={(filter) => setTimeFilter(filter)}
+          color="orangeOnglet"
         />
 
         {/* ---------------------------------Filtre pour joueurs ----------------------------- */}
@@ -59,6 +67,8 @@ export const SideFiltersBar = () => {
           label="Joueurs"
           data={SideFiltersOngletsData.players}
           backgroundColorIfSelected="blueOnglet"
+          onFilterChange={(filter) => setPlayersFilter(filter)}
+          color="pinkOnglet"
         />
       </ul>
     </div>

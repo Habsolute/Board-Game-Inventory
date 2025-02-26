@@ -70,14 +70,14 @@ export async function getUserCollection(
 
     // Première tentative
     collection = await getBoardGameCollection(username);
-    console.log(
-      "Initial collection response:",
-      collection ? "received" : "null"
-    );
+    // console.log(
+    //   "Initial collection response:",
+    //   collection ? "received" : "null"
+    // );
 
     // Tant qu'on a un statut 202 ou pas de collection, on réessaie
     while ((!collection || !collection.items) && retries > 0) {
-      console.log(`Retrying... ${retries} attempts left. Waiting ${delay}ms`);
+      // console.log(`Retrying... ${retries} attempts left. Waiting ${delay}ms`);
       await new Promise((resolve) => setTimeout(resolve, delay));
       collection = await getBoardGameCollection(username);
       retries--;
@@ -85,7 +85,7 @@ export async function getUserCollection(
     }
 
     if (!collection?.items?.item) {
-      console.log("No items found in collection after all retries");
+      // console.log("No items found in collection after all retries");
       return [];
     }
 
@@ -93,7 +93,7 @@ export async function getUserCollection(
       ? collection.items.item
       : [collection.items.item];
 
-    console.log(`Processing ${items.length} games from collection`);
+    // console.log(`Processing ${items.length} games from collection`);
 
     // Traiter tous les jeux en une seule fois
     const gamesResults = await Promise.all(
@@ -138,7 +138,7 @@ export async function getUserCollection(
         game !== null && typeof game.status === "object" && game.status !== null
     );
 
-    console.log(`Final collection size: ${games.length} games`);
+    // console.log(`Final collection size: ${games.length} games`);
     return games;
   } catch (error) {
     console.error("Error fetching user collection:", error);

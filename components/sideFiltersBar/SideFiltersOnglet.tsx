@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { SideFiltersOngletsData } from "./SideFiltersOngletsData";
 import classNames from "classnames";
 interface SideNavigationOngletProps {
@@ -7,6 +7,8 @@ interface SideNavigationOngletProps {
   data: SideFiltersOngletsData[];
   icon: React.ReactNode;
   backgroundColorIfSelected: string;
+  onFilterChange: (filter: string[]) => void;
+  color?: string;
 }
 
 export const SideFiltersOnglet = ({
@@ -14,23 +16,23 @@ export const SideFiltersOnglet = ({
   data,
   icon,
   backgroundColorIfSelected,
+  onFilterChange,
+  color,
 }: SideNavigationOngletProps) => {
   const [openFilter, setOpenFilter] = useState<boolean>(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [selectedFilter, setSelectedFilter] = useState<string>("");
+
   const handleFilterOpen = () => {
     setOpenFilter((prevState) => !prevState);
   };
 
   const handleFilterClick = (filterName: string) => {
-    setSelectedFilters((prevFilters) => {
-      if (prevFilters.includes(filterName)) {
-        return prevFilters.filter((filter) => filter !== filterName);
-      }
-      return [...prevFilters, filterName];
+    setSelectedFilter((prevFilter) => {
+      const newFilter = prevFilter === filterName ? "" : filterName;
+      onFilterChange(newFilter ? [newFilter] : []);
+      return newFilter;
     });
   };
-
-  console.log(selectedFilters);
 
   return (
     <>
@@ -75,10 +77,10 @@ export const SideFiltersOnglet = ({
             <li
               key={item.name}
               className={classNames(
-                "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer",
+                "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white cursor-pointer",
                 {
-                  "bg-gray-100 dark:bg-gray-800 dark:text-white":
-                    selectedFilters.includes(item.name),
+                  [`bg-${color} dark:bg-${color} dark:text-white`]:
+                    selectedFilter === item.name,
                 }
               )}
               onClick={() => handleFilterClick(item.name)}

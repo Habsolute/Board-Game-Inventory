@@ -3,19 +3,20 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { SideFiltersOngletsData } from "../components/sideFiltersBar/SideFiltersOngletsData";
 
-interface FilterCategory {
-  label: string;
-  data: SideFiltersOngletsData[];
-  icon: React.ReactNode;
-  backgroundColorIfSelected: string;
-}
-
 interface FiltersCollectionContextType {
   selectedFilters: string[];
   openFilters: { [key: string]: boolean };
   handleFilterClick: (filterName: string) => void;
   handleFilterOpen: (label: string) => void;
   clearFilters: () => void;
+  genreFilter: string[];
+  ageFilter: string[];
+  timeFilter: string[];
+  playersFilter: string[];
+  setGenreFilter: (filter: string[]) => void;
+  setAgeFilter: (filter: string[]) => void;
+  setTimeFilter: (filter: string[]) => void;
+  setPlayersFilter: (filter: string[]) => void;
 }
 
 const FiltersCollectionContext = createContext<
@@ -31,6 +32,10 @@ export function FiltersCollectionProvider({
   const [openFilters, setOpenFilters] = useState<{ [key: string]: boolean }>(
     {}
   );
+  const [genreFilter, setGenreFilter] = useState<string[]>([]);
+  const [ageFilter, setAgeFilter] = useState<string[]>([]);
+  const [timeFilter, setTimeFilter] = useState<string[]>([]);
+  const [playersFilter, setPlayersFilter] = useState<string[]>([]);
 
   const handleFilterClick = (filterName: string) => {
     setSelectedFilters((prevFilters) => {
@@ -60,6 +65,14 @@ export function FiltersCollectionProvider({
         handleFilterClick,
         handleFilterOpen,
         clearFilters,
+        genreFilter,
+        setGenreFilter,
+        ageFilter,
+        setAgeFilter,
+        timeFilter,
+        setTimeFilter,
+        playersFilter,
+        setPlayersFilter,
       }}
     >
       {children}

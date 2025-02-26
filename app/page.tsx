@@ -13,9 +13,9 @@ export default async function Home() {
   const collection = await getUserCollection("YtaiTouf");
 
   return (
-    <main className="bg-slate-200 w-full min-h-full">
+    <main className="bg-slate-200 w-full flex-1">
       <FiltersCollectionProvider>
-        <div className="flex flex-1">
+        <div className="flex flex-1 h-full min-h-[calc(100vh-100px)]">
           <div className="w-60">
             <SideFiltersBar />
           </div>
