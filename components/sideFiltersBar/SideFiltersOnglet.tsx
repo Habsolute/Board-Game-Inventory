@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { SideFiltersOngletsData } from "./SideFiltersOngletsData";
 import classNames from "classnames";
 interface SideNavigationOngletProps {
@@ -7,6 +7,8 @@ interface SideNavigationOngletProps {
   data: SideFiltersOngletsData[];
   icon: React.ReactNode;
   backgroundColorIfSelected: string;
+  onFilterChange: (filter: string[]) => void;
+  color?: string;
 }
 
 export const SideFiltersOnglet = ({
@@ -14,21 +16,31 @@ export const SideFiltersOnglet = ({
   data,
   icon,
   backgroundColorIfSelected,
+  onFilterChange,
+  color,
 }: SideNavigationOngletProps) => {
   const [openFilter, setOpenFilter] = useState<boolean>(false);
+  const [selectedFilter, setSelectedFilter] = useState<string>("");
+
   const handleFilterOpen = () => {
     setOpenFilter((prevState) => !prevState);
   };
+
+  const handleFilterClick = (filterName: string) => {
+    setSelectedFilter((prevFilter) => {
+      const newFilter = prevFilter === filterName ? "" : filterName;
+      onFilterChange(newFilter ? [newFilter] : []);
+      return newFilter;
+    });
+  };
+
   return (
-    <>
+    <div className="border-b-4 pb-2 border-white">
       <li
         onClick={handleFilterOpen}
-        // className="flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700"
         className={classNames(
-          "flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700",
-          {
-            [`hoverbg-${backgroundColorIfSelected}`]: openFilter,
-          }
+          // "flex justify-between p-2 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items hover:bg-gray-700",
+          `flex justify-between p-4 cursor-pointer  text-gray-300 text-sm items-center gap-x-4 rounded-md mt-2 menu-items  bg-${color}`
         )}
       >
         <div className="flex gap-2">
@@ -62,13 +74,21 @@ export const SideFiltersOnglet = ({
           {data.map((item) => (
             <li
               key={item.name}
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white cursor-pointer"
+              className={classNames(
+                // "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white cursor-pointer",
+                `block px-4 py-2 hover:bg-${color} dark:hover:text-white cursor-pointer`,
+                {
+                  [`bg-${color} dark:bg-${color} dark:text-white`]:
+                    selectedFilter === item.name,
+                }
+              )}
+              onClick={() => handleFilterClick(item.name)}
             >
               {item.name}
             </li>
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };

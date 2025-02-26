@@ -5,6 +5,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "bg-blueOnglet",
+    "bg-pinkOnglet",
+    "bg-orangeOnglet",
+    "bg-greenOnglet",
+    "hover:bg-blueOnglet",
+    "hover:bg-pinkOnglet",
+    "hover:bg-orangeOnglet",
+    "hover:bg-greenOnglet",
+  ],
   theme: {
     extend: {
       colors: {

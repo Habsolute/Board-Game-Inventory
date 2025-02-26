@@ -36,54 +36,50 @@ export const SideFiltersOngletsData = {
   ],
   age: [
     {
-      name: "3+",
-      value: "3+",
+      name: "6 and et moins",
+      value: "6",
     },
     {
-      name: "6+",
-      value: "6+",
+      name: "8 ans et moins",
+      value: "8",
     },
     {
-      name: "8+",
-      value: "8+",
+      name: "10 ans et moins",
+      value: "10",
     },
     {
-      name: "10+",
-      value: "10+",
+      name: "12 ans et moins",
+      value: "12",
     },
     {
-      name: "12+",
-      value: "12+",
-    },
-    {
-      name: "14+",
-      value: "14+",
+      name: "14 ans et moins",
+      value: "14",
     },
   ],
   time: [
     {
-      name: "15 min",
-      value: "15 min",
+      name: "15 Minutes",
+      value: "15",
     },
     {
-      name: "30 min",
-      value: "30 min",
+      name: "30 Minutes",
+      value: "30",
     },
     {
-      name: "45 min",
-      value: "45 min",
+      name: "45 Minutes",
+      value: "45",
     },
     {
-      name: "60 min",
-      value: "60 min",
+      name: "60 Minutes",
+      value: "60",
     },
     {
-      name: "90 min",
-      value: "90 min",
+      name: "90 Minutes",
+      value: "90",
     },
     {
-      name: "120 min",
-      value: "120 min",
+      name: "120 Minutes",
+      value: "120",
     },
   ],
   players: [

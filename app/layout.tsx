@@ -1,6 +1,7 @@
 import { Header } from "components/header/header";
 import "./globals.css";
 import { SideFiltersBar } from "components/sideFiltersBar/SideFiltersBar";
+import { FiltersCollectionProvider } from "providers/FiltersCollectionProvider";
 
 export default function RootLayout({
   children,
@@ -10,12 +11,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className="min-h-screen">
+      <body className="flex flex-col min-h-screen">
         <Header />
-        <div className="flex">
-          <SideFiltersBar />
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );
