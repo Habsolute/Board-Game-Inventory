@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
 import { SideFiltersOngletsData } from "./SideFiltersOngletsData";
 import classNames from "classnames";
+import { TimeIcon } from "components/icons/timeIcon/TimeIcon";
+import { DeleteIcon } from "components/icons/deleteIcon/DeleteIcon";
 interface SideNavigationOngletProps {
   label: string;
   data: SideFiltersOngletsData[];
@@ -76,15 +78,18 @@ export const SideFiltersOnglet = ({
               key={item.name}
               className={classNames(
                 // "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white cursor-pointer",
-                `block px-4 py-2 hover:bg-${color} dark:hover:text-white cursor-pointer`,
+                `flex justify-between items-center px-4 py-2 hover:bg-${color} dark:hover:text-white cursor-pointer`,
                 {
                   [`bg-${color} dark:bg-${color} dark:text-white`]:
-                    selectedFilter === item.name,
+                    selectedFilter === item.name && selectedFilter !== "",
                 }
               )}
               onClick={() => handleFilterClick(item.name)}
             >
               {item.name}
+              {selectedFilter === item.name && selectedFilter !== "" && (
+                <DeleteIcon className="w-7 h-7" color="white" />
+              )}
             </li>
           ))}
         </ul>
