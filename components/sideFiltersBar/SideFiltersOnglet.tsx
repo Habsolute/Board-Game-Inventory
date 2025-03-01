@@ -81,13 +81,13 @@ export const SideFiltersOnglet = ({
                 `flex justify-between items-center px-4 py-2 hover:bg-${color} dark:hover:text-white cursor-pointer`,
                 {
                   [`bg-${color} dark:bg-${color} dark:text-white`]:
-                    selectedFilter === item.name,
+                    selectedFilter === item.name && selectedFilter !== "",
                 }
               )}
               onClick={() => handleFilterClick(item.name)}
             >
               {item.name}
-              {selectedFilter === item.name && (
+              {selectedFilter === item.name && selectedFilter !== "" && (
                 <DeleteIcon className="w-7 h-7" color="white" />
               )}
             </li>

@@ -16,9 +16,7 @@ export default async function Home() {
     <main className="bg-slate-200 w-full flex-1">
       <FiltersCollectionProvider>
         <div className="flex flex-1 h-full min-h-[calc(100vh-100px)]">
-          <div className="w-60">
-            <SideFiltersBar />
-          </div>
+          <SideFiltersBar />
           <div className="flex-1">
             <CollectionPageContainer initialCollection={collection} />
           </div>
