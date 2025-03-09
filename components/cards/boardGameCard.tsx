@@ -20,7 +20,7 @@ export const BoardGameCard = ({ game }: BoardGameCardProps) => {
       <div className="boardgameImage gap-x-2 md:gap-x-0 flex flex-row md:flex-col w-full h-full">
         <div>
           <Image
-            className="rounded-md w-36 h-36 md:w-64 md:w-auto md:h-[200px]"
+            className="aspect-square rounded-md w-36 h-36 md:w-64 md:h-[200px]"
             src={
               game.image || game.thumbnail || "https://picsum.photos/250/250"
             }
