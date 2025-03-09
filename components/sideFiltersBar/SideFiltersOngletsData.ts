@@ -36,7 +36,7 @@ export const SideFiltersOngletsData = {
   ],
   age: [
     {
-      name: "6 and et moins",
+      name: "6 ans et moins",
       value: "6",
     },
     {
