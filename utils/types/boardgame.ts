@@ -3,6 +3,8 @@ export interface BoardGameType {
   name: string;
   yearPublished: number | null;
   description: string;
+  imageId: string;
+  pictureId: string;
   image: string;
   thumbnail: string;
   minPlayers: number | null;
