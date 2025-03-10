@@ -14,6 +14,14 @@ interface BoardGameCardProps {
   game: BoardGameType;
 }
 
+const CACHE_PREFIX = "bgg_image_";
+const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 jours en millisecondes
+
+interface CachedImage {
+  url: string;
+  timestamp: number;
+}
+
 // Fonction utilitaire pour ajouter un délai
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -24,6 +32,20 @@ export const BoardGameCard = ({ game }: BoardGameCardProps) => {
   useEffect(() => {
     const fetchGameImage = async () => {
       try {
+        // Vérifier le cache
+        const cachedData = localStorage.getItem(CACHE_PREFIX + game.id);
+        if (cachedData) {
+          const cached: CachedImage = JSON.parse(cachedData);
+          const isExpired = Date.now() - cached.timestamp > CACHE_DURATION;
+
+          if (!isExpired) {
+            setImgSrc(cached.url);
+            setIsLoading(false);
+            return;
+          }
+        }
+
+        // Si pas en cache ou expiré, charger depuis l'API
         await delay(Math.random() * 900 + 100);
 
         const response = await fetch(
@@ -41,6 +63,16 @@ export const BoardGameCard = ({ game }: BoardGameCardProps) => {
         const imageUrl = xmlDoc.querySelector("image")?.textContent;
 
         if (imageUrl) {
+          // Mettre en cache
+          const cacheData: CachedImage = {
+            url: imageUrl,
+            timestamp: Date.now(),
+          };
+          localStorage.setItem(
+            CACHE_PREFIX + game.id,
+            JSON.stringify(cacheData)
+          );
+
           setImgSrc(imageUrl);
         }
       } catch (error) {
