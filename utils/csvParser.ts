@@ -4,15 +4,6 @@ import path from "path";
 import { BoardGameType } from "./types/boardgame";
 
 export function convertCsvToGameData(csvGame: any): BoardGameType {
-  // Log pour voir les données brutes liées aux images
-  console.log("CSV Game Raw Data:", {
-    objectid: csvGame.objectid,
-    name: csvGame.objectname,
-    image: csvGame.image,
-    imageid: csvGame.imageid,
-    thumbnail: csvGame.thumbnail,
-  });
-
   return {
     id: csvGame.objectid,
     name: csvGame.objectname,

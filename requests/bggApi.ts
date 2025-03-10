@@ -22,11 +22,7 @@ async function fetchWithRetry(
       if (response.ok) {
         return response;
       }
-      console.log(
-        `[${new Date().toISOString()}] Tentative ${i + 1} échouée, status: ${
-          response.status
-        }`
-      );
+
       await delay(delayMs * (i + 1)); // Délai croissant entre les tentatives
     } catch (error) {
       console.error(`[${new Date().toISOString()}] Erreur de fetch:`, error);
@@ -40,10 +36,6 @@ async function fetchWithRetry(
 export async function getBoardGameDetails(
   gameId: string
 ): Promise<BGGGameDetails> {
-  console.log(
-    `[${new Date().toISOString()}] Début requête détails pour jeu ${gameId}`
-  );
-
   const response = await fetchWithRetry(
     `${BGG_API_BASE}/thing?id=${gameId}&stats=1`
   );
@@ -51,7 +43,6 @@ export async function getBoardGameDetails(
 
   try {
     const result = (await parseXMLPromise(xmlData)) as BGGGameDetails;
-    console.log(`[${new Date().toISOString()}] Succès pour jeu ${gameId}`);
     return result;
   } catch (error) {
     console.error(
@@ -63,9 +54,6 @@ export async function getBoardGameDetails(
 }
 
 export async function getBoardGameCollection(username: string) {
-  console.log(
-    `[${new Date().toISOString()}] Requête collection pour ${username}`
-  );
   const response = await fetch(
     `${BGG_API_BASE}/collection?username=${username}&stats=1`
   );
